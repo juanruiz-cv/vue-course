@@ -13,9 +13,34 @@
       const vm = Vue.createApp({
         data() {
           return {
-            text: "Hola Vue",
+            text: "¡Puerta abierta!",
+            open: true,
           };
         },
+        // watch: {
+        //   text(value, old) {
+        //     console.log("WATCH: \n- New:", value, "\n- Old:", old);
+        //   },
+        // },
+        // template: `{{ text }}`,
+        computed: {
+          label() {
+            return this.open ? "Cerrar" : "Abrir";
+          },
+        },
+        watch: {
+          open(value) {
+            if (this.open) {
+              this.text = "¡Puerta abierta!";
+            } else {
+              this.text = "¡Puerta cerrada!";
+            }
+          },
+        },
+        template: `
+        <p>{{ text }}</p>
+        <button @click="open = !open">{{ label }}</button> 
+        `,
       }).mount("#app");
       console.log(vm);
     </script>
