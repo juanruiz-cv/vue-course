@@ -16,6 +16,25 @@
             text: "Hola Vue",
           };
         },
+        methods: {
+          inputChange(e) {
+            this.text = e.target.value;
+          },
+        },
+        // template: `
+        // <p>{{text}}</p>
+        // <input
+        // type="text"
+        // :value="text"
+        // @input="inputChange"
+        // />
+        // `,
+        template: `
+        <p>{{text}}</p>
+        <input
+        v-model="text"
+        />
+        `,
       }).mount("#app");
       console.log(vm);
     </script>
